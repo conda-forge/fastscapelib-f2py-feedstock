@@ -1,6 +1,6 @@
 {% set name = "fastscapelib-f2py" %}
-{% set version = "2.8.0" %}
-{% set sha256 = "bdbffba3f27a4e23b8fb611d98f3e5650b200636f5dfa0d776cd9dd6f3df0631" %}
+{% set version = "2.8.1" %}
+{% set sha256 = "fbb4b6e107f40e2b7792c551abb6423fbd2c35aa6edac824617fe9a0e46161e1" %}
 
 package:
   name: {{ name|lower }}
