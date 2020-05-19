@@ -1,6 +1,6 @@
 {% set name = "fastscapelib-f2py" %}
-{% set version = "2.8.1" %}
-{% set sha256 = "fbb4b6e107f40e2b7792c551abb6423fbd2c35aa6edac824617fe9a0e46161e1" %}
+{% set version = "2.8.2" %}
+{% set sha256 = "425e9e8003ce7dff5027ccc1f2c817933e9f0f6d68dff41b6b4b6357ec7d1586" %}
 
 package:
   name: {{ name|lower }}
@@ -11,7 +11,7 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 1
+  number: 0
   skip: true  # [win]
 
 requirements:
@@ -38,7 +38,7 @@ about:
   home: https://github.com/fastscape-lem/fastscapelib-fortran
   license: GPL-3.0
   license_file: LICENSE
-  summary: 'Library for landscape evolution modeling (Python bindings)'
+  summary: Library for landscape evolution modeling (Python bindings)
   description: |
     A Fortran library that implements efficient algorithms
     for landscape evolution modeling.
