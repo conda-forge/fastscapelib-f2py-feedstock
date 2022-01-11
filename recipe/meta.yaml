@@ -15,7 +15,8 @@ build:
 
 requirements:
   build:
-    - {{ compiler('fortran') }}
+    - {{ compiler('fortran') }}  # [not win]
+    - flang >=11  # [win]
     - {{ compiler('c') }}
     - cmake
   host:
@@ -28,6 +29,7 @@ requirements:
   run:
     - python
     - {{ pin_compatible('numpy') }}
+    - libflang  # [win]
 
 test:
   imports:
