@@ -10,7 +10,7 @@ mkdir "%SRC_DIR%\dist"
 
 "%PYTHON%" setup.py bdist_wheel ^
            --dist-dir="%SRC_DIR%\dist" ^
-           -G "Ninja"
+           -G "NMake Makefiles"
 
 "%PYTHON%" -m pip install ^
            --no-index ^

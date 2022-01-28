@@ -15,11 +15,10 @@ build:
 
 requirements:
   build:
-    - {{ compiler('fortran') }}  # [unix]
-    - flang >=11                 # [win]
+    - {{ compiler('fortran') }}  # [not win]
+    - flang =5.0                 # [win]
     - {{ compiler('c') }}
     - cmake
-    - ninja  # [win]
   host:
     - python
     - scikit-build
@@ -27,12 +26,12 @@ requirements:
     - wheel
     - setuptools
     - numpy
-    - nomkl  # [win]
+    - nomkl          # [win]
   run:
     - python
     - {{ pin_compatible('numpy') }}
-    - libflang  # [win]
-    - nomkl  # [win]
+    - libflang =5.0  # [win]
+    - nomkl          # [win]
 
 test:
   imports:
