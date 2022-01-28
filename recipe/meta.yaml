@@ -26,10 +26,12 @@ requirements:
     - wheel
     - setuptools
     - numpy
+    - nomkl  # [win]
   run:
     - python
     - {{ pin_compatible('numpy') }}
     - libflang  # [win]
+    - nomkl  # [win]
 
 test:
   imports:
