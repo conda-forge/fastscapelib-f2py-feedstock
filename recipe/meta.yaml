@@ -19,6 +19,7 @@ requirements:
     - flang =5.0                 # [win]
     - {{ compiler('c') }}
     - cmake
+    - make           # [linux]
   host:
     - python
     - scikit-build
