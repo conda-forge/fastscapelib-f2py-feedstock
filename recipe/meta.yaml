@@ -17,7 +17,7 @@ requirements:
   build:
     - {{ compiler('fortran') }}  # [unix]
     - flang >=11                 # [win]
-    - {{ compiler('c') }}        # [unix]
+    - {{ compiler('c') }}
     - cmake
   host:
     - python
