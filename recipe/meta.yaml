@@ -19,6 +19,7 @@ requirements:
     - flang >=11                 # [win]
     - {{ compiler('c') }}
     - cmake
+    - ninja  # [win]
   host:
     - python
     - scikit-build
