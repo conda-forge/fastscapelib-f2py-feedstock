@@ -11,13 +11,15 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 2
+  number: 3
 
 requirements:
   build:
-    - {{ compiler('fortran') }}
+    - {{ compiler('fortran') }}  # [not win]
+    - flang =5.0                 # [win]
     - {{ compiler('c') }}
     - cmake
+    - make           # [linux]
   host:
     - python
     - scikit-build
@@ -25,9 +27,12 @@ requirements:
     - wheel
     - setuptools
     - numpy
+    - nomkl          # [win]
   run:
     - python
     - {{ pin_compatible('numpy') }}
+    - libflang =5.0  # [win]
+    - nomkl          # [win]
 
 test:
   imports:

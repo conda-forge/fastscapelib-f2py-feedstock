@@ -1,1 +1,4 @@
 conda_forge_output_validation: true
+provider:
+  win: azure
+build_with_mambabuild: false
