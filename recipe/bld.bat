@@ -4,10 +4,13 @@ dir %RECIPE_DIR%
 
 echo %LIB%
 
+set FC=%BUILD_PREFIX%\Library\bin\flang.exe
+
 mkdir "%SRC_DIR%\dist"
 
 "%PYTHON%" setup.py bdist_wheel ^
            --dist-dir="%SRC_DIR%\dist" ^
+           -G "NMake Makefiles"
 
 "%PYTHON%" -m pip install ^
            --no-index ^
