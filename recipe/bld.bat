@@ -4,20 +4,6 @@ dir %RECIPE_DIR%
 
 echo %LIB%
 
-:: Explicitly Set path to f2py and Fortran compiler
-if exist %PREFIX%\Scripts\f2py.exe (
-  set F2PY=%PREFIX%\Scripts\f2py.exe
-) else (
-  set F2PY=%PREFIX%\Scripts\f2py.bat
-)
-
-set FC=%BUILD_PREFIX%\Library\bin\flang.exe
-
-:: remove chocolatey gfortran
-if "%CI%" == "azure" (
-  rm "C:\ProgramData\Chocolatey\bin\gfortran.exe"
-)
-
 mkdir "%SRC_DIR%\dist"
 
 "%PYTHON%" setup.py bdist_wheel ^
