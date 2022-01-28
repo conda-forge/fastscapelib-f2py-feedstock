@@ -21,8 +21,7 @@ requirements:
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - numpy                                  # [build_platform != target_platform]
     - scikit-build                           # [build_platform != target_platform]
-    - {{ compiler('fortran') }}  # [not win]
-    - flang >=11  # [win]
+    - {{ compiler('fortran') }}
     - {{ compiler('c') }}
     - cmake
     - make  # [linux]
@@ -36,7 +35,6 @@ requirements:
   run:
     - python
     - {{ pin_compatible('numpy') }}
-    - libflang  # [win]
 
 test:
   imports:
