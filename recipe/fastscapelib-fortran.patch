@@ -32,45 +32,18 @@ index 1540617..d85f286 100644
 
    install(
 diff --git a/cmake/FindF2PY.cmake b/cmake/FindF2PY.cmake
-index 5fa39a9..c9b4641 100644
+index 5fa39a9..c4e6bd4 100644
 --- a/cmake/FindF2PY.cmake
 +++ b/cmake/FindF2PY.cmake
-@@ -68,12 +68,18 @@
+@@ -66,7 +66,7 @@
+ #   case, CMake is not used to find the compiler and configure the associated build system.
+ #
 
- find_program(F2PY_EXECUTABLE NAMES f2py${PYTHON_VERSION_MAJOR} f2py)
+-find_program(F2PY_EXECUTABLE NAMES f2py${PYTHON_VERSION_MAJOR} f2py)
++# find_program(F2PY_EXECUTABLE NAMES f2py${PYTHON_VERSION_MAJOR} f2py)
 
-+message(STATUS "find f2py program results: ${F2PY_EXECUTABLE}")
-+
  # XXX This is required to support NumPy < v0.15.0. See note in module documentation above.
  if(NOT F2PY_EXECUTABLE)
-   find_package(NumPy)
-   set(F2PY_EXECUTABLE "${PYTHON_EXECUTABLE}" "-m" "numpy.f2py.__main__")
-+  message(STATUS "find f2py via numpy python exec: ${PYTHON_EXECUTABLE}")
-+  message(STATUS "find f2py via numpy results: ${F2PY_EXECUTABLE}")
- endif()
-
-+message(STATUS "f2py_include_dir results: ${F2PY_INCLUDE_DIR}")
-+
- if(NOT F2PY_INCLUDE_DIR)
-   execute_process(
-       COMMAND "${PYTHON_EXECUTABLE}"
-@@ -85,6 +91,7 @@ if(NOT F2PY_INCLUDE_DIR)
-   string(REPLACE "\\" "/" _f2py_directory ${_f2py_directory})
-
-   set(F2PY_INCLUDE_DIR "${_f2py_directory}/src" CACHE STRING "F2PY source directory location" FORCE)
-+  message(STATUS "f2py_include_dir results: ${F2PY_INCLUDE_DIR}")
- endif()
-
- # Set-up the F2PY libraries and include directories
-@@ -112,6 +119,8 @@ if(F2PY_EXECUTABLE)
-   endif()
- endif()
-
-+message(STATUS "f2py version results: ${F2PY_VERSION_STRING}")
-+
- # handle the QUIETLY and REQUIRED arguments and set F2PY_FOUND to TRUE if
- # all listed variables are TRUE
- include(FindPackageHandleStandardArgs)
 diff --git a/pyproject.toml b/pyproject.toml
 index 470bf86..0dc6bb9 100644
 --- a/pyproject.toml
