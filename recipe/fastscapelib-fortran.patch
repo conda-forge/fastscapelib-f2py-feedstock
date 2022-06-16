@@ -1,0 +1,54 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1540617..d85f286 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -134,9 +134,10 @@ if(SKBUILD)
+   # TODO: remove when https://github.com/scikit-build/scikit-build/pull/495 is merged
+   set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/" ${CMAKE_MODULE_PATH})
+
++  find_package(PythonLibs REQUIRED)
++  find_package(PythonExtensions REQUIRED)
+   find_package(NumPy REQUIRED)
+   find_package(F2PY REQUIRED)
+-  find_package(PythonExtensions REQUIRED)
+
+   set(F2PY_MODULE_NAME "_fastscapelib_fortran")
+
+@@ -145,6 +146,16 @@ if(SKBUILD)
+     INCLUDE_DIRECTORIES ${FASTSCAPELIB_SRC_DIR}
+     )
+
++  if (UNIX)
++    if (APPLE)
++      set_target_properties(${F2PY_MODULE_NAME} PROPERTIES
++        LINK_FLAGS  '-Wl,-dylib,-undefined,dynamic_lookup')
++    else()
++      set_target_properties(${F2PY_MODULE_NAME} PROPERTIES
++        LINK_FLAGS  '-Wl,--allow-shlib-undefined')
++    endif()
++  endif()
++
+   python_extension_module(${F2PY_MODULE_NAME})
+
+   install(
+diff --git a/cmake/FindF2PY.cmake b/cmake/FindF2PY.cmake
+index 5fa39a9..c4e6bd4 100644
+--- a/cmake/FindF2PY.cmake
++++ b/cmake/FindF2PY.cmake
+@@ -66,7 +66,7 @@
+ #   case, CMake is not used to find the compiler and configure the associated build system.
+ #
+
+-find_program(F2PY_EXECUTABLE NAMES f2py${PYTHON_VERSION_MAJOR} f2py)
++# find_program(F2PY_EXECUTABLE NAMES f2py${PYTHON_VERSION_MAJOR} f2py)
+
+ # XXX This is required to support NumPy < v0.15.0. See note in module documentation above.
+ if(NOT F2PY_EXECUTABLE)
+diff --git a/pyproject.toml b/pyproject.toml
+index 470bf86..0dc6bb9 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,2 +1,3 @@
+ [build-system]
+ requires = ["setuptools", "wheel", "scikit-build", "cmake", "ninja", "numpy"]
++build-backend = "setuptools.build_meta"
