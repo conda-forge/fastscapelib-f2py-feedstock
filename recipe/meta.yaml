@@ -13,7 +13,7 @@ source:
     - fastscapelib-fortran.patch
 
 build:
-  number: 4
+  number: 5
 
 requirements:
   run_constrained:  # [osx]
