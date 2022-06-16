@@ -10,9 +10,4 @@ if [ "$target_platform" = "osx-arm64" ]; then
   ln -sf $PREFIX/lib/libc++.dylib $PREFIX/lib/libpython$PY_VER.dylib
 fi
 
-$PYTHON -m pip install . \
-  --no-build-isolation \
-  --no-deps \
-  --ignore-installed \
-  --no-cache-dir \
-  -vvv
+$PYTHON setup.py build_ext install
