@@ -1,0 +1,29 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 1540617..06d06dc 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -145,6 +145,16 @@ if(SKBUILD)
+     INCLUDE_DIRECTORIES ${FASTSCAPELIB_SRC_DIR}
+     )
+
++  if (UNIX)
++    if (APPLE)
++      set_target_properties(${F2PY_MODULE_NAME} PROPERTIES
++        LINK_FLAGS  '-Wl,-dylib,-undefined,dynamic_lookup')
++    else()
++      set_target_properties(${F2PY_MODULE_NAME} PROPERTIES
++        LINK_FLAGS  '-Wl,--allow-shlib-undefined')
++    endif()
++  endif()
++
+   python_extension_module(${F2PY_MODULE_NAME})
+
+   install(
+diff --git a/pyproject.toml b/pyproject.toml
+index 470bf86..0dc6bb9 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,2 +1,3 @@
+ [build-system]
+ requires = ["setuptools", "wheel", "scikit-build", "cmake", "ninja", "numpy"]
++build-backend = "setuptools.build_meta"
