@@ -13,7 +13,7 @@ source:
     - fastscapelib-fortran.patch
 
 build:
-  number: 6
+  number: 7
 
 requirements:
   build:
