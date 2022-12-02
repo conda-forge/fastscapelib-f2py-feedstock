@@ -1,6 +1,6 @@
 {% set name = "fastscapelib-f2py" %}
-{% set version = "2.8.2" %}
-{% set sha256 = "425e9e8003ce7dff5027ccc1f2c817933e9f0f6d68dff41b6b4b6357ec7d1586" %}
+{% set version = "2.8.3" %}
+{% set sha256 = "7b4250b179f64c362d57dc43bd86f9694fdcb888f6d7fc5f63bf4f8fc3f3e437" %}
 
 package:
   name: {{ name|lower }}
@@ -13,7 +13,7 @@ source:
     - fastscapelib-fortran.patch
 
 build:
-  number: 6
+  number: 0
 
 requirements:
   build:
