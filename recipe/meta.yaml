@@ -12,7 +12,7 @@ source:
     - fastscapelib-fortran.patch
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
@@ -23,6 +23,7 @@ requirements:
     - {{ compiler('fortran') }}  # [not win]
     - flang =5.0                 # [win]
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - cmake
     - make           # [linux]
   host:
