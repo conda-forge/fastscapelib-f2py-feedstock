@@ -12,7 +12,7 @@ source:
     - fastscapelib-fortran.patch
 
 build:
-  number: 1
+  number: 2
 
 requirements:
   build:
@@ -36,7 +36,6 @@ requirements:
     - nomkl          # [win]
   run:
     - python
-    - {{ pin_compatible('numpy') }}
     - libflang =5.0  # [win]
     - nomkl          # [win]
 
