@@ -12,7 +12,7 @@ source:
     - fastscapelib-fortran.patch
 
 build:
-  number: 3
+  number: 4
 
 requirements:
   build:
@@ -20,8 +20,7 @@ requirements:
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - numpy <=1.22.0|>=1.24                  # [build_platform != target_platform]
     - scikit-build                           # [build_platform != target_platform]
-    - {{ compiler('fortran') }}  # [not win]
-    - flang =5.0                 # [win]
+    - {{ compiler("fortran") }}
     - {{ compiler('c') }}
     - {{ stdlib("c") }}
     - cmake
